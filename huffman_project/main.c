@@ -33,6 +33,7 @@ int main() {
             break;
     }
 
+    system("pause");
     free(fileName);
     return 0;
     
