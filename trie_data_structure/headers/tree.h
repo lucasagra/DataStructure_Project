@@ -49,19 +49,19 @@ trie_t* create_empty_trie(char def) {
      * trie pointers to NULL and initialize the boolean isLeaf as false. */
 }
 
-void insert_in_trie(trie_t* root, char *key) {
+void insert_in_trie(trie_t* root, char *word) {
 
     int level;
     int index;
 
     trie_t* current = root;
 
-    for (level = 0; key[level] != '\0'; ++level)
+    for (level = 0; word[level] != '\0'; ++level)
     {
-        index = alpha_key(key[level]);
+        index = alpha_key(word[level]);
 
         if (!current->items[index])
-            current->items[index] = create_empty_trie(key[level]);
+            current->items[index] = create_empty_trie(word[level]);
 
         current->items[index]->previous = current;
         current = current->items[index];
@@ -69,7 +69,7 @@ void insert_in_trie(trie_t* root, char *key) {
 
     // mark last node as leaf
     current->isLeaf = TRUE;
-    printf("Adicionado: %s\n", key);
+    printf("Adicionado: %s\n", word);
 
     /* Receives  a trie and a pointer to a char which will be the word that we want to insert,
      * after that we run for each string character always verifying if it will be necessary or
