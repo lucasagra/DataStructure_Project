@@ -104,9 +104,8 @@ function continues to execute._
 4. With the tree ready, it's time to start decompressing. In this algorithm, we reallocate the string
 containing the file name in order to remove the .huff extension.
 
-5. In the decompression process, we read first to the **penultimate** byte. For each read byte, go bit by bit,
+5. In the decompression process, we read first to the last but one byte. For each read byte, go bit by bit,
 traversing the tree, if the bit is 1, go right, if 0 goes left. At the moment the current node is a leaf,
-put the byte of its representative in the new file.
+write the byte of its representative in the new file and go back to the root of the tree.
 
-6. Then we read the last byte. It's basically the same process from the top, the only difference is the
-control by the size of the trash.
+6. Then we read the last byte. It's basically the same process from the previous one, the only difference is that the loop is managed by the size of the trash.
