@@ -22,7 +22,7 @@ FILE* open_file() {
 
 int trie_train(trie_t* trie, FILE* file) {
 
-    char *code = malloc(20);
+    char *word = malloc(20);
     size_t n = 0;
     int c;
 
@@ -30,20 +30,22 @@ int trie_train(trie_t* trie, FILE* file) {
     {
         if (c != '\n')
         {
-            code[n++] = (char)c;
+            word[n++] = (char)c;
         }
         else
         {
-            code[n] = '\0';
+            word[n] = '\0';
 
-            insert_in_trie(trie, code);
+            insert_in_trie(trie, word);
             n = 0;
 
-            code[0] = '\0';
+            word[0] = '\0';
         }
     }
 
+    free(word);
     return 1;
+
 
     /* Receives a trie and a FILE pointer to the train file, them read each file
      * byte saving it on a array, and when we find a \n character call the insert
