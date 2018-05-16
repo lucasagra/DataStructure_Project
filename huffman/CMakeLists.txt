@@ -14,6 +14,5 @@ add_executable(huffman_project main.c
                 ./headers/compress/node.h
                 ./headers/compress/stack.h
                 ./headers/compress/header.h
-                ./headers/compress/queue.h
                 ./headers/decompress.h
                 ./headers/decompress/header.h)

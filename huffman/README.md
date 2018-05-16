@@ -66,19 +66,20 @@ because while the tree is traversed, the binaries (0 or 1) are pushed on the sta
 this way they are reversed, but by copying the stack in the path of each byte in the hash table, 
 it reverses again, and the inverse of the reverse is the original path._
 
-6. Now let's build the new file ``Header``. For this we need to have the size of the trash (how much
+6. Now let's get the 2 first bytes of the ``Header``. For this we need to have the size of the trash (how much
 is missing for the last byte to have 8 bits) and the size of the tree (number of nodes). Having
-this, we take the respective numbers and transform them into a sequence of bits, 3 bits for the
-size of the trash and 13 bits for the size of the tree, totalizing 16 bits (2 bytes). By the 
-time they are transformed, we enqueue up each bit in a _Queue_ (which will save that header for later).
-Next, we read the tree again to get every character in a string. After completing the string, 
-we enqueue the 8 bits of each character in the queue.
+this, we proceed to get these 2 bytes with shiftbits and bitwise operations.
 
-7. With the header ready, we open the file again. As we go through the file, reading byte by byte, we go to the 
-position in the hash table that represents the byte read, we take the stack that stores the compressed byte and
-enqueue in the queue (same one that has the header bits), after that, while there is more than 8 bits in the queue,
-dequeue 8 by 8 and write its respective byte in the new file. When the last byte of the file is read, if there 
-is remaining bits in the queue, the algorithm completes with 0's, then writes the last byte of the new file.
+7. In the last step we start the compression creating a new file. First we write the 2 bytes got from the last step,
+which represents the trash and tree size, after that we run a recursive function to print all the preoder bytes in the file.
+Now that the header is done, we start to read the file to be compressed. As we go through the file, 
+reading byte by byte, we go to the position in the hash table that represents the byte read, we take the stack that 
+stores the compressed byte and check 1 by 1, when the stack is finished it means that byte was compressed.
+Back in the last step, we managed to use the bits of an integer byte to deal with the bits read from the stack,
+as it was like a Queue, through bitwise operations.
+When the 'Queue' reaches 8 or more bits, we remove the oldest 8 bits and print its respective char in the file.
+After the reading of the file is done, if there is remaining bits in the 'Queue', we insert bits 0's until this last 
+byte is complete, then it's written in the file.
 
    > Note: _we read the file again because in this algorithm, we do not save the sequence that each byte
 appears._

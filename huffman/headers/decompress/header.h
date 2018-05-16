@@ -5,7 +5,7 @@
 #ifndef HUFFMAN_PROJECT_HEADER_DECOMPRESS_H
 #define HUFFMAN_PROJECT_HEADER_DECOMPRESS_H
 
-/* Functions related to manipulate the header of the compressed file
+/* Functions related to manipulate the header of the compressed.bmp file
  */
 
 void get_trash_and_tree_size(FILE* file, unsigned int* trash, unsigned int* tree) {

@@ -23,12 +23,12 @@ typedef struct _stack Stack_t;
 
 struct _stack {
     Node_t *top;
-    int current_size;
+    short int current_size;
 };
 
 /* Statement of the structure needed to manipulate the stack
- * This stack stores the compressed binary of each byte
- * Each node represents each bit of the compressed element
+ * This stack stores the compressed.bmp binary of each byte
+ * Each node represents each bit of the compressed.bmp element
  */
 
 Stack_t* create_stack() {
@@ -65,6 +65,16 @@ void pop(Stack_t *stack) {
 
     // Remove the top of the stack
 
+}
+
+void free_stack(Stack_t *stack) {
+
+    while (stack->current_size > 0)
+    {
+        pop(stack);
+    }
+
+    free(stack);
 }
 
 // ---- Print Functions ---- //

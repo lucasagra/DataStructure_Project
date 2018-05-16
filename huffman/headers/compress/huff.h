@@ -96,27 +96,4 @@ BinaryTree_t* build_huffman(PriorityQueue_t* pq) {
      */
 }
 
-void get_tree_nodes_pre_order(BinaryTree_t *huff, unsigned char *tree_elements, int *index) {
-
-    if (!is_empty(huff))
-    {
-        tree_elements[*index] = *(unsigned char*)huff->item;
-        *index = *index + 1;
-
-        if (*(unsigned char*)huff->item == 92)
-        {
-            tree_elements[*index] = *(unsigned char*)(huff->item + 1);
-            *index = *index + 1;
-        } // If item = '\', also put *(item+1) in the string.
-
-        get_tree_nodes_pre_order(huff->left, tree_elements, index);
-        get_tree_nodes_pre_order(huff->right, tree_elements, index);
-    }
-
-    /* Receives the huff tree, a pointer to the string (tree_elements) and pointer to index.
-     * The function will be ran recursively and each different tree node item
-     * will be given to the string.
-     */
-}
-
 #endif //HUFFMAN_PROJECT_HUFF_H

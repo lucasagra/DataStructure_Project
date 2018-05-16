@@ -25,10 +25,10 @@ void decompress(char *fileName) {
 
     unsigned int trash_size, tree_size;
     get_trash_and_tree_size(file, &trash_size, &tree_size);
-    // Get the trash and tree sizes from the compressed file header
+    // Get the trash and tree sizes from the compressed.bmp file header
 
     compressed_byte_length = (long int)(compressed_byte_length - 2 - tree_size);
-    /* Calculates how many compressed bytes the file has, minus 2 bytes of the trash and
+    /* Calculates how many compressed.bmp bytes the file has, minus 2 bytes of the trash and
      * minus the size of the tree (bytes of each node of the tree that are in the header)
      */
 
@@ -66,7 +66,7 @@ void start_decompression(FILE* file, char* fileName, BinaryTree_t* huffTree, int
 
     BinaryTree_t *current = huffTree;
 
-    while (bytesRead < compressedBytesLength - 1) // Run through the compressed bytes, but not the last one
+    while (bytesRead < compressedBytesLength - 1) // Run through the compressed.bmp bytes, but not the last one
     {
 
         fscanf(file, "%c", &byte);
@@ -87,7 +87,7 @@ void start_decompression(FILE* file, char* fileName, BinaryTree_t* huffTree, int
             {
                 unsigned char* outputByte = current->item;
 
-                if (outputByte[0] == '\\')
+                if (outputByte[0] == 92) // If it's '\'
                 {
                     fprintf(decompressed, "%c", outputByte[1]);
                 }
@@ -98,13 +98,14 @@ void start_decompression(FILE* file, char* fileName, BinaryTree_t* huffTree, int
                 // Check if we have the escape character or not
 
                 current = huffTree;
+                // Return to root
             }
         }
 
         ++bytesRead;
     }
 
-    /* So far the algorithm has read up to the penultimate byte, because the last byte will depend
+    /* So far the algorithm has read up to the last but one byte, because the last byte will depend
      * on the size of the trash, so the functions below represent the last byte of the file.
      */
 
@@ -125,7 +126,7 @@ void start_decompression(FILE* file, char* fileName, BinaryTree_t* huffTree, int
         {
             unsigned char* outputByte = current->item;
 
-            if (outputByte[0] == '\\')
+            if (outputByte[0] == 92) // If it's '\'
             {
                 fprintf(decompressed, "%c", outputByte[1]);
             }
@@ -143,7 +144,7 @@ void start_decompression(FILE* file, char* fileName, BinaryTree_t* huffTree, int
     printf("Done\n"
            "Decompression process completed!\n");
 
-    /* This function is the core for the decompression function, here the compressed bytes
+    /* This function is the core for the decompression function, here the compressed.bmp bytes
      * are checked, bit by bit, run the tree and since we find a leaf, the new decompressed
      * byte (the tree value) will be printed on the new file
      */

@@ -32,7 +32,7 @@ struct _ht {
 
 /* Statement of the structures needed to manipulate the hash tables
  * Each position of the table points to an element
- * Each element has its representative, its frequency and its bit path (compressed with the huffman tree)
+ * Each element has its representative, its frequency and its bit path (compressed.bmp with the huffman tree)
  */
 
 HashTable_t* create_hash_table() {
@@ -198,7 +198,7 @@ unsigned long long int bits_quantity(HashTable_t* ht) {
 
     return bits;
 
-    // Calculate how many bits the file will have after compressed (excluding the header)
+    // Calculate how many bits the file will have after compressed.bmp (excluding the header)
 }
 
 void free_ht(HashTable_t *ht) {
