@@ -1,8 +1,10 @@
-# Trie Data Structure C
+# Data Structure C Project
 
-A simple trie data structure implementation in C language.
+## Trie Structure Presentation
+## Huffman Algorithm
+## ABB vs AVL 
 
-## Group
+### Group
 - [Phyllipe Bezerra](https://github.com/pmba)
 - [Lucas Agra](https://github.com/lucasagra)
 - [Thiago Tenório](https://github.com/thitcc)
