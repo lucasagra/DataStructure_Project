@@ -1,6 +1,6 @@
-# Trie Data Structure C
+# ABB vs AVL
 
-A simple trie data structure implementation in C language.
+A simple test to compare de differences between these structures
 
 ## Group
 - [Phyllipe Bezerra](https://github.com/pmba)
