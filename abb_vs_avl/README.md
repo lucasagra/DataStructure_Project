@@ -1,6 +1,6 @@
 # ABB vs AVL
 
-A simple test to compare de differences between these structures
+A test to compare de differences between these structures
 
 ## Group
 - [Phyllipe Bezerra](https://github.com/pmba)
