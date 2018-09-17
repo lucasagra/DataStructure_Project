@@ -1,4 +1,4 @@
-# ABB vs AVL
+# Binary Search Tree vs AVL Tree
 
 A test to compare de differences between these structures
 
