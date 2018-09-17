@@ -2,7 +2,7 @@
 
 ## Trie Structure Presentation
 ## Huffman Algorithm
-## ABB vs AVL 
+## Binary Search Tree vs AVL Tree
 
 ### Group
 - [Phyllipe Bezerra](https://github.com/pmba)
